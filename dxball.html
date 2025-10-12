@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DxBall</title>
+    
+</head>
+<body>
+  <canvas id="c" height="500" width="600" style="background-color: beige;"></canvas> 
+  <script>
+    let ctx = c.getContext("2d");
+
+    let ball = {x:30,y:50,r:25,dx:3,dy:4,color:"red"};
+    let tray = {x:70,y:c.height-20,w:100,h:10,s:20};
+    document.onkeydown=e=>{
+        if(e.code=="ArrowRight"&&tray.x>0)tray.x+=tray.s;
+        if(e.code=="ArrowLeft"&&tray.x<tray.x+tray.w)tray.x-=tray.s;
+    }
+    function draw(){
+        ctx.clearRect(0,0,c.width,c.height);
+        ctx.fillStyle= "brown";
+        ctx.fillRect(tray.x,tray.y,tray.w,tray.h);
+        ctx.beginPath();
+        ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
+        ctx.fillStyle=ball.color;
+        ctx.fill();
+        ball.x+=ball.dx;
+        ball.y+=ball.dy;
+        if(ball.x+ball.r>c.width||ball.x-ball.r<0){
+            ball.dx*=-1
+        }
+        if(ball.y-ball.r<0){
+            ball.dy*=-1
+        }
+        if(ball.y+ball.r>tray.y&&ball.x>tray.x&&ball.x<tray.x+tray.w){
+            ball.dy*=-1
+            ball.y=tray.y-ball.r
+        }
+        if(ball.y+ball.r>c.height){
+            document.write("Game Over.....!!!!")
+        }
+
+      
+        
+
+        requestAnimationFrame(draw)
+
+    }
+
+    draw()
+
+  </script> 
+</body>
+</html>
