@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleCart</title>
+    <style>
+
+        body{
+            background-color: aqua;
+            width: 1200px;
+            height: 678px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <p id="mobile">0</p>
+    <button onclick="addmobile()">AddMobile</button>
+    <button onclick="removemobile()">RemoveMobile</button>
+
+
+
+    <p id="laptop">0</p>
+    <button onclick="addlaptop()">AddLaptop</button>
+    <button onclick="removelaptop()">RemoveLaptop</button>
+
+
+    <p id="tab">0</p>
+    <button onclick="addtab()">AddTab</button>
+    <button onclick="removetab()">RemoveTab</button>
+
+    <h4 id="total">Total:</h4>
+</body>
+<script>
+    let mobile=0;
+    let tab = 0;
+    let laptop = 0;
+
+    function update(){
+
+        document.getElementById("mobile").textContent = mobile
+        document.getElementById("laptop").textContent = laptop
+        document.getElementById("tab").textContent = tab
+          document.getElementById("total").textContent = tab+laptop+mobile
+    }
+    function addmobile(){
+        mobile++;
+        update();
+    }
+    function removemobile(){
+        
+        if(mobile>0){
+            mobile--
+        update();}
+    }
+
+        function addlaptop(){
+        laptop++
+        update();
+    }
+    function removelaptop(){
+        
+        if(laptop>0){ laptop--
+        update();
+        }}
+    
+        function addtab(){
+        tab++
+        update();
+    }
+    function removetab(){
+        
+        if(tab>0){
+            tab--
+        update();
+        }}
+</script>
+</html>
