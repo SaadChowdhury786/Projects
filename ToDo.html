@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TO-DO List</h1>
+    <input type="text" id="input" placeholder="ENTER TASK"/>
+    <button onclick="add()">AddTask</button>
+    <ul id="list"></ul>
+    <script>
+        const input = document.getElementById("input")
+        const list = document.getElementById("list")
+
+        function add(){
+            if (input.value===""){
+                alert("INSERT TEXT PLEASE");
+                return;
+            }
+            let li= document.createElement("li");
+            li.innerHTML= input.value + `<button onclick="this.parentElement.remove()">X</button>`
+            list.appendChild(li) 
+            
+        }
+    </script>
+</body>
+</html>
